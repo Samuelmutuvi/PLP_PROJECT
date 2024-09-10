@@ -1,8 +1,12 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import mysql.connector
 from mysql.connector import Error
+from flask_cors import CORS
+
 
 app = Flask(__name__)
+CORS(app)
+
 
 # Database connection
 def get_db_connection():
@@ -18,22 +22,19 @@ def get_db_connection():
             print("Successfully connected to the database")
             return connection
     except Error as e:
-        print(f"Error: {e}")
+        print(f"Error in connecting to MySQL: {e}")
         return None
 
-@app.route('/index.html')
+# Route to serve HTML page (if you have an index.html file)
+@app.route('/')
 def index():
-    return "Welcome to the Construction Capture App!"
-
-@app.route('/favicon.ico')
-def favicon():
-    return app.send_static_file('favicon.ico')
+    return render_template('index.html')
 
 # Endpoint to capture material data
 @app.route('/submit/materials', methods=['POST'])
 def submit_materials_data():
     data = request.json
-    material = data.get('material_name')
+    material = data.get('material')
     quantity = data.get('quantity')
     amount_per_piece = data.get('amount_per_piece')
     date = data.get('date')
@@ -45,7 +46,7 @@ def submit_materials_data():
     cursor = conn.cursor()
 
     try:
-        # Insert material data
+        # Insert material data into database
         cursor.execute("""
             INSERT INTO materials (material_name, quantity, amount_per_piece, date) VALUES (%s, %s, %s, %s)
         """, (material, quantity, amount_per_piece, date))
@@ -77,7 +78,7 @@ def submit_employee_data():
     cursor = conn.cursor()
 
     try:
-        # Insert employee data
+        # Insert employee data into database
         cursor.execute("""
             INSERT INTO employees (employee_name, days_worked, amount_paid_per_day, date) VALUES (%s, %s, %s, %s)
         """, (employee_name, days_worked, amount_paid_per_day, date))

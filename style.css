@@ -1,54 +1,95 @@
+/* General Page Styling */
 body {
     font-family: Arial, sans-serif;
-    margin: 40px;
-    padding: 10px;
     background-color: #f4f4f4;
+    /* background-image: url('istockphoto-1370644110-612x612.jpg');
+    background-size: cover; /* Scales the image to cover the entire page */
+    background-repeat:-repeat; /* Prevents the image from repeating */
+    background-position: center center; */
+    margin: 0;
+    padding: 0;
+    text-align: center;
 }
 
 h1 {
-    text-align: center;
-   color: blueviolet;
-    text-decoration: underline;
+    background-color: #4CAF50;
+    color: white;
+   
+    padding: 15px;
+    margin: 0;
+    font-size: 28px;
 }
 
+p {
+    font-size: 30px;
+    color: #0f0a0c;
+}
+
+/* Form Container Styling */
+.form-container {
+    background-color: white;
+    padding: 20px;
+    margin: 20px auto;
+    width: 50%;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+strong{
+    text-decoration: bold;
+}
 
 h2 {
-    text-align: center;
-    color: #3109f8;
-    text-decoration: underline;
-}
-
-form {
-    background: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.889);
-    max-width: 600px;
-    margin: 20px auto;
+    color: #333;
+    margin-bottom: 15px;
 }
 
 label {
-    display: inline-block;
-    color: rgba(12, 1, 12, 0.968);
-    width: 150px;
-    font-weight: bold;
+    display: block;
+    font-size: 16px;
+    margin: 10px 0 5px;
 }
 
-input {
-    width: calc(100% - 160px);
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
+input[type="text"], input[type="number"], input[type="date"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 5px 0 15px;
+    border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-input[type="submit"] {
-    background-color: #05e705;
+button {
+    background-color: #4CAF50;
     color: white;
+    padding: 10px 15px;
     border: none;
+    border-radius: 4px;
     cursor: pointer;
+    font-size: 16px;
 }
 
-input[type="submit"]:hover {
-    background-color: #4cae4c;
+button:hover {
+    background-color: #45a049;
+}
+
+#response {
+    margin: 20px auto;
+    width: 50%;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    display: none;
+}
+
+/* Button Styling */
+button {
+    margin: 15px 10px;
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 600px) {
+    .form-container {
+        width: 90%;
+    }
 }
