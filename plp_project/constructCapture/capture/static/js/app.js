@@ -54,6 +54,7 @@ function submitEmployees() {
     const employee_name = document.getElementById('employee_name').value;
     const days_worked = document.getElementById('days_worked').value;
     const amount_paid_per_day = document.getElementById('amount_paid_per_day').value;
+    const role_of_the_employee = document.getElementById('role_of_the_employee').value;
     const date = document.getElementById('employee_date').value;
 
     fetch('capture/employee/submit/', {  // Ensure this matches your Django URL pattern
@@ -66,6 +67,7 @@ function submitEmployees() {
             employee_name: employee_name,
             days_worked: days_worked,
             amount_paid_per_day: amount_paid_per_day,
+            role_of_the_employee:role_of_the_employee,
             date: date
         })
     })

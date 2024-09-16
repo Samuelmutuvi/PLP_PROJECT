@@ -67,6 +67,10 @@
             <input type="number" id="amount_paid_per_day" name="amount_paid_per_day" required><br>
             <br />
 
+            <label for="role_of_the_employee">Role of the employee:</label>
+            <input type="text" id="role_of_the_employee" name="role_of_the_employee" required><br>
+            <br />
+
             <label for="employee_date">Date:</label>
             <input type="date" id="employee_date" name="date" required><br>
             <br />
@@ -75,6 +79,17 @@
         </form>
     </div>
 
+
+    {% if messages %}
+    <div class="alert-messages">
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+  
     <div id="response"></div>
 
     <script src="{% static 'js/app.js' %}"></script>

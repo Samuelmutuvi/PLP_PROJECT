@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from django.contrib import messages
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
@@ -59,6 +60,7 @@ def submit_employees(request):
             employee_name = data.get('employee_name')
             days_worked = data.get('days_worked')
             amount_paid_per_day = data.get('amount_paid_per_day')
+            role = data.get('role_of_the_employee')
             date = data.get('date')
 
  # Save the employee data (if Employee model exists)
@@ -66,6 +68,7 @@ def submit_employees(request):
                 employee_name=employee_name,
                 days_worked=days_worked,
                 amount_paid_per_day=amount_paid_per_day,
+                role = role,
                 date=date
             )
 
@@ -76,3 +79,5 @@ def submit_employees(request):
             return JsonResponse({'message': 'Invalid JSON format'}, status=400)
     else:
         return JsonResponse({'message': 'Invalid request method'}, status=405)
+    
+    
